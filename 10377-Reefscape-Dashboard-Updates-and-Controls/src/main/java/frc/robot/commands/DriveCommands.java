@@ -199,6 +199,36 @@ public class DriveCommands {
                         }));
     }
 
+    public static Command Leave2(Drive drive) {
+        Timer timer = new Timer();
+
+        return Commands.sequence(
+
+                // Allow modules to orient
+                Commands.run(
+                                () -> {
+                                    drive.runCharacterization(0.0);
+                                },
+                                drive)
+                        .withTimeout(FF_START_DELAY),
+
+                // Start timer
+                Commands.runOnce(timer::restart),
+
+                // Accelerate and gather data
+                Commands.run(
+                                () -> {
+                                    double voltage = 0.5; // changed to constant.
+                                    drive.runCharacterization(voltage);
+                                },
+                                drive)
+
+                        // When cancelled, calculate and print results
+                        .finallyDo(() -> {
+                                System.out.println("celebrate");
+                        }));
+    }
+
     /** Measures the robot's wheel radius by spinning in a circle. */
     public static Command wheelRadiusCharacterization(Drive drive) {
         SlewRateLimiter limiter = new SlewRateLimiter(WHEEL_RADIUS_RAMP_RATE);
