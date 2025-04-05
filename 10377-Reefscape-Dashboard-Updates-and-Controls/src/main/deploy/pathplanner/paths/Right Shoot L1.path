@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.258045212765958,
-        "y": 3.838297872340425
+        "x": 1.2379668049792532,
+        "y": 2.1680497925311193
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.418438808610539,
-        "y": 3.8511058016674533
+        "x": 2.237966804979254,
+        "y": 2.1680497925311193
       },
       "isLocked": false,
-      "linkedName": "L4 Checkpoint 1"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 5.8461103723404255,
-        "y": 3.838297872340425
+        "x": 3.8686462655601654,
+        "y": 2.8689574688796675
       },
       "prevControl": {
-        "x": 6.9145031592001445,
-        "y": 3.8294862431406735
+        "x": 2.8686462655601654,
+        "y": 2.8689574688796675
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Scored on G L4"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -33,15 +33,21 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "L2",
+      "name": "L1",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "Shoot Coral",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
       "command": null
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 0.5,
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -49,13 +55,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 59.82647997035554
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

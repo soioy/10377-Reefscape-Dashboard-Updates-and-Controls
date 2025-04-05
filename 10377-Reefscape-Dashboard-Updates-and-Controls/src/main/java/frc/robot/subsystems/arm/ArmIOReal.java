@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DutyCycleEncoder;
 
 public class ArmIOReal implements ArmIO {
     private final TalonFX armMotor = new TalonFX(ArmConstants.ARM_MOTOR_ID);
-    private final DutyCycleEncoder encoder = new DutyCycleEncoder(ArmConstants.ENCODER_PORT, 1, -0.42);
+    private final DutyCycleEncoder encoder = new DutyCycleEncoder(ArmConstants.ENCODER_PORT, 1, 0);
     private final DigitalInput limitSwitch = new DigitalInput(ArmConstants.LIMIT_SWITCH_PORT);
 
     public ArmIOReal() {

@@ -7,11 +7,11 @@ public class ElevatorConstants {
     public static final int ELEVATOR_CURRENT_LIMITS = 40; // TODO: Verify or adjust this value
     public static final double MAX_POS = -52; // Max position in encoder units
     public static final double MIN_POS = 0.1; // Min position in encoder units
-    public static final double LOAD_POS = -22.5; // TODO: Set this value
+    public static final double LOAD_POS = -10; // TODO: Set this value
     public static final double L1_POS = 0.1; // TODO: Verify this value
     public static final double L2_POS = 0.1; // TODO: Verify this value
     public static final double L3_POS = 0.1; // TODO: Verify this value
-    public static final double L4_POS = -50; // TODO: Verify this value
+    public static final double L4_POS = -54; // TODO: Verify this value
     public static final double P = 0.08; // PID Proportional gain
     public static final double I = 0; // PID Integral gain
     public static final double D = 0; // PID Derivative gain

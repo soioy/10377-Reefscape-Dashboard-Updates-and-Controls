@@ -169,7 +169,7 @@ public class DriveCommands {
                 // Accelerate and gather data
                 Commands.run(
                                 () -> {
-                                    double voltage = timer.get() * FF_RAMP_RATE;
+                                    double voltage = 2;
                                     drive.runCharacterization(voltage);
                                     velocitySamples.add(drive.getFFCharacterizationVelocity());
                                     voltageSamples.add(voltage);
@@ -196,36 +196,6 @@ public class DriveCommands {
                             System.out.println("********** Drive FF Characterization Results **********");
                             System.out.println("\tkS: " + formatter.format(kS));
                             System.out.println("\tkV: " + formatter.format(kV));
-                        }));
-    }
-
-    public static Command Leave2(Drive drive) {
-        Timer timer = new Timer();
-
-        return Commands.sequence(
-
-                // Allow modules to orient
-                Commands.run(
-                                () -> {
-                                    drive.runCharacterization(0.0);
-                                },
-                                drive)
-                        .withTimeout(FF_START_DELAY),
-
-                // Start timer
-                Commands.runOnce(timer::restart),
-
-                // Accelerate and gather data
-                Commands.run(
-                                () -> {
-                                    double voltage = 0.5; // changed to constant.
-                                    drive.runCharacterization(voltage);
-                                },
-                                drive)
-
-                        // When cancelled, calculate and print results
-                        .finallyDo(() -> {
-                                System.out.println("celebrate");
                         }));
     }
 

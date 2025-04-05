@@ -17,6 +17,8 @@ import static edu.wpi.first.units.Units.*;
 // mport static frc.robot.subsystems.vision.VisionConstants.*;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.events.EventTrigger;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -127,6 +129,12 @@ public class RobotContainer {
                 break;
         }
 
+        new EventTrigger("L4").onTrue(elevator.elevatorL4());
+        new EventTrigger("L2").onTrue(elevator.elevatorL2());
+        new EventTrigger("ArmL2").onTrue(arm.armL2());
+
+        NamedCommands.registerCommand("Shoot Coral", corral.run(-2).withTimeout(1));
+
         // Set up auto routines
         autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
 
@@ -154,9 +162,9 @@ public class RobotContainer {
         drive.setDefaultCommand(DriveCommands.joystickDrive(
                 drive, () -> -controller.getLeftY(), () -> -controller.getLeftX(), () -> -controller.getRightX()));
 
-        // arm.setDefaultCommand(Commands.parallel(elevator.ElevatorDown(), arm.armL0()));
-        // elevator.setDefaultCommand(elevator.manualElevator(() -> secondary.getRightY()));
-        controller.x().onTrue(Commands.parallel(elevator.ElevatorDown(), arm.armL2()));
+        arm.setDefaultCommand(arm.manualArm(() -> secondary.getRightY(), true));
+        elevator.setDefaultCommand(elevator.manualElevator(() -> secondary.getLeftY()));
+        controller.x().onTrue(Commands.parallel(elevator.ElevatorDown(), arm.armL1()));
         controller.y().onTrue(Commands.parallel(elevator.ElevatorDown(), arm.armL2()));
         controller.b().onTrue(Commands.parallel(elevator.ElevatorDown(), arm.armL3()));
         controller.a().onTrue(Commands.parallel(elevator.elevatorL4(), arm.armL4()));
@@ -164,7 +172,7 @@ public class RobotContainer {
         controller.leftBumper().onTrue(Commands.parallel(elevator.ElevatorDown(), arm.armL0())); // home
         controller.rightBumper().onTrue(Commands.parallel(elevator.elevatorLoad(), arm.armLoad())); // loading
 
-        controller.leftTrigger().whileTrue(corral.run(-3)); // outtake
+        controller.leftTrigger().whileTrue(corral.run(-2)); // outtake
         controller.rightTrigger().whileTrue(corral.run(3)); // intake
 
         DriveCommands.joystickDrive(

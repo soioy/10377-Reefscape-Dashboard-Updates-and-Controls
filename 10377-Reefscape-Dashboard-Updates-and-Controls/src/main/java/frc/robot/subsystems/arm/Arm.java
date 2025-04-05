@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import java.util.Map;
-import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 
 public class Arm extends SubsystemBase {
@@ -183,10 +182,10 @@ public class Arm extends SubsystemBase {
         return createArmCommand(ArmConstants.LOAD_POS, true);
     }
 
-    public Command manualArm(DoubleSupplier joystick, BooleanSupplier canFold) {
+    public Command manualArm(DoubleSupplier joystick, boolean canFold) {
         return new FunctionalCommand(
                 () -> {},
-                () -> setVoltage(joystick.getAsDouble() * 5.0),
+                () -> setVoltage(joystick.getAsDouble() * 3.0),
                 interrupted -> stopMotor(),
                 () -> false,
                 this);

@@ -9,11 +9,11 @@ public class ArmConstants {
 
     // Setpoints
     public static final double L0_POS = 0.0;
-    public static final double L1_POS = 0.214;
-    public static final double L2_POS = 0.95;
-    public static final double L3_POS = 0.91;
-    public static final double L4_POS = 0.8;
-    public static final double LOAD_POS = 0.19; // Approximate load position
+    public static final double L1_POS = 0.90;
+    public static final double L2_POS = 0.97;
+    public static final double L3_POS = 0.60;
+    public static final double L4_POS = 0.87;
+    public static final double LOAD_POS = 0.09; // Approximate load position
 
     // Safe range for folding
     public static final double MIN_SAFE_FOLD_POS = 0.05;
@@ -24,6 +24,7 @@ public class ArmConstants {
     public static final double MAX_POS = 0.8;
 
     // Feedforward coefficient (adjust based on testing)
+
     public static final double KF_COEFFICIENT = 0.10;
 
     // Hardware IDs
